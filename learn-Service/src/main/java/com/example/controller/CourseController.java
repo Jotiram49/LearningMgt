@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.exception.FlightNotFoundException;
 import com.example.model.Course;
-import com.example.service.ManageAirlineService;
+import com.example.service.CourseService;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiOperation;
 @CrossOrigin
 public class CourseController {
 	@Autowired
-	private ManageAirlineService service;
+	private CourseService service;
 
 	@GetMapping("")
 	@Cacheable(value = "course")

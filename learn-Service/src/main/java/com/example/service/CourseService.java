@@ -11,7 +11,7 @@ import com.example.model.Course;
 import com.example.repository.CourseRepository;
 
 @Service
-public class ManageAirlineService {
+public class CourseService {
 	@Autowired
 	private CourseRepository repository;
 
