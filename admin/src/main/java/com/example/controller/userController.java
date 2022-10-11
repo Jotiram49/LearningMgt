@@ -2,8 +2,6 @@ package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,17 +32,6 @@ public class userController {
 		return service.checkUser(email,pass);
 	}
 	
-	@GetMapping("/{id}")
-	public userModel FindUserId(@PathVariable int id) {
-		System.out.println(id);
-		return service.findUserById(id);
-	}
-	@GetMapping("search/{name}")
-	public userModel findUserByEmail(@PathVariable String name)
-	{
-		System.out.println("name:"+name);
-		return service.findUserByEmail(name);
-	}
 	
 	
 
