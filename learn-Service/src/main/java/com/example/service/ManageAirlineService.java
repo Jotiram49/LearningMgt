@@ -7,25 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.exception.FlightNotFoundException;
-import com.example.model.AirlineModel;
-import com.example.repository.AirlineRepository;
+import com.example.model.Course;
+import com.example.repository.CourseRepository;
 
 @Service
 public class ManageAirlineService {
 	@Autowired
-	private AirlineRepository repository;
+	private CourseRepository repository;
 
-	public AirlineModel addAirline(AirlineModel airline) {
-		return repository.save(airline);
+	public Course addCourse(Course course) {
+		return repository.save(course);
 	}
 
-	public List<AirlineModel> getallAirlines() {
+	public List<Course> getallCourse() {
 		return repository.findAll();
 	}
 
-	public AirlineModel findAirlineById(int id) throws FlightNotFoundException{
+	public Course findCourseById(int id) throws FlightNotFoundException{
 		System.out.println("in service id: " + id);
-		Optional<AirlineModel> optional = repository.findById(id);
+		Optional<Course> optional = repository.findById(id);
 		if (optional.isPresent()) {
 			return optional.get();
 		} else {
@@ -33,7 +33,7 @@ public class ManageAirlineService {
 			//return null;
 		}
 	}
-	public boolean deleteAirlne(int id) throws FlightNotFoundException {
+	public boolean deleteCourse(int id) throws FlightNotFoundException {
 		if (repository.existsById(id)) {
 			this.repository.deleteById(id);
 			return true;
@@ -41,35 +41,21 @@ public class ManageAirlineService {
 			return false;
 		}
 	}
-	public AirlineModel updateAirlinebyId(int id,AirlineModel airline) throws FlightNotFoundException
+	public Course updateCoursebyId(int id,Course course) throws FlightNotFoundException
 	{
 		return repository.findById(id)
-	            .map(existAirline -> {
-	            	existAirline.setAirlinename(airline.getAirlinename());
-	            	existAirline.setLogo(airline.getLogo());
-	            	existAirline.setLogo(airline.getLogo());
-	            	existAirline.setContactNum(airline.getContactNum());
-	            	existAirline.setContactAddress(airline.getContactAddress());
-	                return repository.save(existAirline);
+	            .map(existcourse -> {
+	            	existcourse.setCoursename(course.getCoursename());
+	            	existcourse.setLaunchURL(course.getLaunchURL());
+	            	existcourse.setCourseDescription(course.getCourseDescription());
+	            	existcourse.setCourseDuration(course.getCourseDuration());
+	            	existcourse.setTechnology(course.getTechnology());
+	                return repository.save(existcourse);
 	            })
 	            .orElseGet(() -> {
 	                return null;
 	            });
 	}
-	/*public boolean deleteSchedule(Long id) {
-
-        boolean isRemoved = this.repository.removeIf(post -> post.getId().equals(id));
-
-        return isRemoved;
-    }
-	public AirlineModel UdateAirlineById(int id) {
-		System.out.println("in service id: " + id);
-		Optional<AirlineModel> optional = repository.findById(id);
-		if (optional.isPresent()) {
-			return optional.get();
-		} else {
-			return null;
-		}
-	}*/
+	
 	
 }
