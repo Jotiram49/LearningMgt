@@ -3,7 +3,7 @@ server:
 
 spring:
    application:
-      name: zuul
+      name: API GATWAY
       
 eureka:
    client:
@@ -18,9 +18,9 @@ ribbon:
             
 zuul:
    routes:
-      FLIGHT-SERVICE:
+      COURSE-SERVICE:
          path: /admin/**
-         url: FLIGHT-SERVICE  
+         url: COURSE-SERVICE  
       USER-SERVICE:
          path: /user/**
          url: USER-SERVICE
